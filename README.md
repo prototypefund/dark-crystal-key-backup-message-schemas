@@ -1,16 +1,20 @@
+# Dark Crystal Key Backup Message Schemas 
 
+JSON and (soon) protobuf template schemas for Dark Crystal key backup messages.
 
-JSON and (soon) protobuf template schemas and validation for Dark Crystal key backup messages.
+Validation methods in javascript - [json-schema.org](https://json-schema.org/) using [is-my-json-valid](https://github.com/mafintosh/is-my-json-valid).
 
-All messages contain a version number of the schema to allow backward compatibility when updating the schemas.
+These can be seen as templates, as you may want to modify them based on the individual needs of your project. But they can also be simply used as they are.
 
 ## Schemas
+
+All messages contain a version number of the schema to allow backward compatibility when updating the schemas.
 
 ### `root`
 
 This message will be published exactly once for each shared secret, and will contain a name for the secret.  It will be a private message with exactly one recipient which will be the author of the message. Custodians are not able to read it.
 
-Its serves as a record for the secret owner, but is also referred to by the other messages.  
+Its serves as a record for the secret owner, but is also referred to by the other messages.  Its reference might be the hash of the message, or a reference to where it is stored (for example in an append-only log such as 'hypercore', the feed-id and sequence number of the encrypted message). This way, we have a way of establishing that a collection of shard messages belong to the same secret, without revealing any additional metadata.
 
 Example:
 
