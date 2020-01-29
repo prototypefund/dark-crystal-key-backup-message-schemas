@@ -3,7 +3,7 @@ const basics = require('../basics')
 module.exports = {
   $schema: 'http://json-schema.org/schema#',
   type: 'object',
-  required: ['type', 'version', 'name', 'quorum', 'shards', 'timestamp'],
+  required: ['type', 'version', 'quorum', 'shards', 'timestamp'],
   properties: {
     type: basics.type('root'),
     version: basics.version('1.0.0'),
