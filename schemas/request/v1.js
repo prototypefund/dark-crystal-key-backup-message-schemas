@@ -1,24 +1,15 @@
-const isCanonicalBase64 = require('is-canonical-base64')
+const basics = require('../basics')
 
 module.exports = {
   $schema: 'http://json-schema.org/schema#',
   type: 'object',
-  required: ['type', 'version', 'recipient', 'root'],
+  required: ['type', 'version', 'recipient', 'root', 'timestamp'],
   properties: {
-    type: {
-      type: 'string',
-      pattern: '^dark-crystal/request$'
-    },
-    version: {
-      type: 'string',
-      pattern: '^1.0.0$'
-    },
-    root: {
-
-    },
-    ephemeralPublicKey: {
-      type: 'string',
-      pattern: isCanonicalBase64(null, '\.curve25519', 32)
-    }
+    type: basics.type('request'),
+    version: basics.version('1.0.0'),
+    root: basics.messageRef,
+    recipient: basics.hexString(basics.PUBLICKEYLENGTH),
+    ephemeralPublicKey: basics.hexString(basics.ENCRYPTIONPUBLICKEYLENGTH),
+    timestamp: { type: 'integer' }
   }
 }
