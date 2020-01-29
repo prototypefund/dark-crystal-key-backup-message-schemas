@@ -8,7 +8,12 @@ These can be seen as templates, as you may want to modify them based on the indi
 
 ## Schemas
 
-All messages contain a version number of the schema to allow backward compatibility when updating the schemas.
+All messages contain:
+- A `type` field describing which kind of message it is
+- A `version` number of the schema to allow backward compatibility when updating the schemas.
+- A `timestamp` giving a record of what happened then.
+
+Depending on whether it is implicit to the transport protocol used, it may also be appropriate to include an `author` field, with the public key of the author of the message.
 
 ### `root`
 
@@ -23,9 +28,10 @@ Example:
   "type": "dark-crystal/root",
   "version": "1.0.0",
   "name": "directions to treasure",
-  "quorum":2,
-  "shards":5,
-  "tool": <version of secrets module used>
+  "quorum": 2,
+  "shards": 5,
+  "tool": <version of secrets module used>,
+  "timestamp": 1580300916260 
 }
 ```
 with message ID.
@@ -33,8 +39,6 @@ with message ID.
 ### `shard`
 
 This message will be published once for each shard of the secret.  It will contain a reference to the `root` message for that secret, as well as the shard itself.  The shard will be encrypted with the public key of the recipient of the shard.  This will be a private message with exactly two recipients, one of which will be the author of the message.  Note that there are two levels of encryption here, which means that the shard itself is not exposed to the author but the rest of the message is.  This allows the author to keep track of who shards have been sent to as well as to verify shard integrity when receiving the decrypted shard later.
-
-TODO: explain using signatures for validation
 
 Example:
 
@@ -44,7 +48,8 @@ Example:
   "version": "1.0.0",
   "root": <reference to root message>,
   "shard": <shard data>,
-  "recipient": <public key of recipient> 
+  "recipient": <public key of recipient>, 
+  "timestamp": 1580300916260 
 }
 ```
 ### `Request`
@@ -53,7 +58,9 @@ Example:
   "type": "dark-crystal/request",
   "version": "1.0.0",
   "recipient": <public key of recipient>, 
-  "root": <reference to root message>
+  "root": <reference to root message>,
+  "ephPublicKey": <one-time public key>,
+  "timestamp": 1580300916260 
 }
 ```
 
@@ -65,7 +72,8 @@ Example:
   "recipient": <public key of recipient>,
   "root": <reference to root message>,
   "branch": <reference to request message>,
-  "shard": <encrypted shard data>
+  "shard": <encrypted shard data>,
+  "timestamp": 1580300916260 
 }
 ```
 ### `Forward`
@@ -85,5 +93,6 @@ Example:
   "shard": <encrypted shard data>
   "shareVersion": '1.0.0',
   "recipient": <public key of recipient>,
+  "timestamp": 1580300916260, 
 }
 ```
