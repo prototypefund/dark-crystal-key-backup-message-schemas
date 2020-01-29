@@ -1,28 +1,17 @@
+const basics = require('../basics')
+const shard = Object.assign(basics.hexString(), { minlength: basics.MINSHARDLENGTHBYTES * 2 })
+
 module.exports = {
   $schema: 'http://json-schema.org/schema#',
   type: 'object',
-  required: ['type', 'version', 'root', 'shard', 'recps', 'shareVersion'],
+  required: ['type', 'version', 'root', 'shard', 'recipient', 'timestamp'],
   properties: {
-    type: {
-      type: 'string',
-      pattern: '^dark-crystal/forward'
-    },
-    version: {
-      type: 'string',
-      pattern: '1.0.0'
-    },
-    shareVersion: {
-      type: 'string',
-      pattern: '^[0-9]+\.[0-9]+\.[0-9]+$'
-    },
-    shard: { type: 'string' },
-    root: { $ref: '#/definitions/messageId' },
-    branch: { $ref: '#/definitions/branch' },
-    recps: {
-      type: 'array',
-      maxItems: 2,
-      minItems: 2,
-      items: { $ref: '#/definitions/feedId' }
-    }
+    type: basics.type('reply'),
+    version: basics.version('1.0.0'),
+    root: basics.messageRef,
+    shard,
+    recipient: basics.hexString(basics.PUBLICKEYLENGTH),
+    branch: basics.messageRef,
+    timestamp: { type: 'integer' }
   }
 }
