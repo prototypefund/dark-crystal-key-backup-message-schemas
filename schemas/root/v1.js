@@ -10,11 +10,13 @@ module.exports = {
     name: { type: 'string' },
     quorum: {
       type: 'integer',
-      minimum: 2
+      minimum: 2,
+      maximum: 255
     },
     shards: {
       type: 'integer',
-      minimum: 2
+      minimum: 2,
+      maximum: 255
     },
     tool: { type: 'string' },
     timestamp: { type: 'integer' }
