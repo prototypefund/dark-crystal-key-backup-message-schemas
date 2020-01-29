@@ -1,0 +1,10 @@
+{
+  "type": "dark-crystal/root",
+  "version": "1.0.0",
+  "name": "cabbage",
+  "tool": "sss",
+  "quorum": 3,
+  "shards": 5,
+  "recipient": "ecbdd06a7e97b04541c598fcb8c22f4a3d26a64a152ac7a4869c80cd6a32b4d0",
+  "timestamp": 1580308280149
+}
