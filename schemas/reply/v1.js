@@ -1,5 +1,5 @@
 const basics = require('../basics')
-const shard = Object.assign(basics.hexString(), { minlength: basics.MINSHARDLENGTHBYTES * 2 })
+const shard = Object.assign(basics.hexString(), { minLength: basics.MINSHARDLENGTHBYTES * 2 })
 
 module.exports = {
   $schema: 'http://json-schema.org/schema#',
