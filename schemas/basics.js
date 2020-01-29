@@ -28,7 +28,7 @@ function hexString (lengthBytes) {
     }
     : {
       type: 'string',
-      pattern: '[0-9a-fA-F]+'
+      pattern: '^[0-9a-fA-F]+$'
     }
 }
 
