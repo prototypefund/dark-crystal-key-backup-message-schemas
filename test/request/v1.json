@@ -1,0 +1,8 @@
+{
+  "type": "dark-crystal/request",
+  "version": "1.0.0",
+  "root": "594198f9a2966998581cafc511e41c83fe4af983120bb39fcd71c9ada0f62d0c",
+  "recipient": "ecbdd06a7e97b04541c598fcb8c22f4a3d26a64a152ac7a4869c80cd6a32b4d0",
+  "ephemeralPublicKey": "aa85a69a7eed503fb5cda0e47e3d53a5c031b2a5e43fe11a6b9abe7359ef24ff",
+  "timestamp": 1580308280149
+}
