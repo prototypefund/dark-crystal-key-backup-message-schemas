@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+message Reply {
+  required string type = 1;
+  required string version = 2;
+  required fixed32 timestamp = 3;
+  required bytes recipient = 4;
+  required bytes root = 5;
+  required bytes branch = 6;
+  required bytes shard = 7;
+}
