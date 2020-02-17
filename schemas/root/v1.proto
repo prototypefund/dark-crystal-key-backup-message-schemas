@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+message Root {
+  required string type = 1;
+  required string version = 2;
+  required fixed32 timestamp = 3;
+  required uint32 quorum = 4;
+  required uint32 shards = 5;
+  optional string name = 6;
+  optional string tool = 7;
+}
