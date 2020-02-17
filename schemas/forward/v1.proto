@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+message Forward {
+  required string type = 1;
+  required string version = 2;
+  required fixed32 timestamp = 3;
+  required bytes root = 4;
+  required bytes shard = 5;
+  required bytes recipient = 6;
+  optional bytes branch = 7;
+}
